@@ -1,0 +1,104 @@
+.login-main {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    // width: 100%;
+
+    .login-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        flex-grow: 0.5;
+        padding: 0 35px;
+
+        .logo {
+            margin-bottom: 30px;
+        }
+
+        .title {
+            font-size: 14px;
+            font-weight: bold;
+            margin-bottom: 45px;
+            color: var(--dark-text);
+        }
+
+        .btn-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            gap: 15px;
+
+            button {
+                width: 100%;
+                border-radius: 8px;
+                font-size: 16px;
+                font-weight: 500;
+                border: none;
+                padding: 12px 24px;
+                background: transparent;
+                cursor: pointer;
+    
+                &.btn-primary {
+                    background-color: var(--blue-main);
+                    color: white;
+                }
+    
+                &.btn-secondary {                
+                    border: 1px solid var(--blue-main);
+                    color: var(--blue-main);
+                }
+            }
+
+            .divider-wrapper {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                justify-content: center;
+                width: 100%;
+                gap: 10px;
+
+                mat-divider {
+                    flex-grow: 1;
+                    border-color: var(--light-text);
+                }
+
+                span {
+                    font-size: 12px;
+                    color: var(--light-text);
+                    text-transform: uppercase;
+                }
+            }
+        }
+    }
+
+    .image-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100%;
+
+        gap: 8px;
+        flex-grow: 1;
+        background-color: var(--blue-light);
+
+        .slogan {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--light-text);
+        }
+
+        .event-ilustration {
+            height: auto;
+            width: 40%;
+            max-width: 80%;
+        }
+    }
+}
