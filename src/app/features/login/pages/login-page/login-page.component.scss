@@ -1,0 +1,17 @@
+.login-form {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    gap: 24px;
+    margin-bottom: 34px;
+
+    .forgot-password {
+        text-align: end;
+
+        font-size: 12px;
+        text-decoration: underline;
+        color: var(--light-text);
+        cursor: pointer;
+    }
+}
