@@ -4,22 +4,22 @@ import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { LoginRoutingModule } from './login-routing.module';
 import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
-import { LoginContainerComponent } from './components/login-container-component/login-container-component.component';
-import { PrimaryInputComponent } from './components/primary-input-component/primary-input-component.component';
 import { LoginService } from 'src/app/services/login.service';
+import { ComponentsSharedModule } from 'src/app/shared/components/components-shared.module';
 
 @NgModule({
   declarations: [
     LoginPageComponent,
-    LoginContainerComponent,
-    PrimaryInputComponent
   ],
   imports: [
     CommonModule,
     LoginRoutingModule,
-    FormsModule,
     MaterialModule,
-    ReactiveFormsModule
+
+    FormsModule,
+    ReactiveFormsModule,
+
+    ComponentsSharedModule
   ],
   providers: [
     LoginService
