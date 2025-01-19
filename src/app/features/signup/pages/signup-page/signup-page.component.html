@@ -1,0 +1,44 @@
+<app-login-component
+    title="Sign in and start today!"
+    primaryButtonText="Cadastrar-se"
+    secondaryButtonText="Login"
+    (submit)="submit()"
+    (navigate)="navigate()"
+>
+    <form [formGroup]="signupForm">
+        <app-primary-input-component
+            formControlName="name"
+            inputName="name"
+            type="text"
+            label="Your name"
+            placeholder="John Doe"
+        >
+            <!-- <img src="/assets/svg/email-icon.svg"/> -->
+        </app-primary-input-component>
+        <app-primary-input-component
+            formControlName="email"
+            inputName="email"
+            type="email"
+            label="Email"
+            placeholder="johndoe@gmail.com"
+        >
+            <!-- <img src="/assets/svg/email-icon.svg"/> -->
+        </app-primary-input-component>
+        <app-primary-input-component
+            formControlName="password"
+            inputName="password"
+            type="password"
+            label="Your Password"
+        >
+            <!-- <img src="/assets/svg/password-icon.svg"/> -->
+        </app-primary-input-component>
+        <app-primary-input-component
+            formControlName="passwordConfirm"
+            inputName="passwordConfirm"
+            type="password"
+            label="Confirm your Password"
+        >
+            <!-- <img src="/assets/svg/password-icon.svg"/> -->
+        </app-primary-input-component>
+    </form>
+</app-login-component>
