@@ -6,6 +6,7 @@ import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginContainerComponent } from './components/login-container-component/login-container-component.component';
 import { PrimaryInputComponent } from './components/primary-input-component/primary-input-component.component';
+import { LoginService } from 'src/app/services/login.service';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,9 @@ import { PrimaryInputComponent } from './components/primary-input-component/prim
     FormsModule,
     MaterialModule,
     ReactiveFormsModule
+  ],
+  providers: [
+    LoginService
   ]
 })
 export class LoginModule { }

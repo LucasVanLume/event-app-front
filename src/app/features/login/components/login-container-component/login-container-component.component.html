@@ -6,13 +6,13 @@
         <ng-content></ng-content>
 
         <div class="btn-wrapper">
-            <button class="btn-primary" mat-raised-button>{{ primaryButtonText }}</button>
+            <button class="btn-primary" (click)="submit()" mat-raised-button>{{ primaryButtonText }}</button>
             <div class="divider-wrapper">
                 <mat-divider></mat-divider>
                 <span>OU</span>
                 <mat-divider></mat-divider>
             </div>
-            <button class="btn-secondary" mat-raised-button>{{ secondaryButtonText }}</button>
+            <button class="btn-secondary" (click)="navigate()" mat-raised-button>{{ secondaryButtonText }}</button>
         </div>
     </section>
 

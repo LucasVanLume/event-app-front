@@ -1,4 +1,10 @@
-<app-login-component title="Entre na sua conta" primaryButtonText="Entrar" secondaryButtonText="Cadastrar-se">
+<app-login-component 
+    title="Entre na sua conta" 
+    primaryButtonText="Entrar" 
+    secondaryButtonText="Cadastrar-se"
+    (submit)="submit()"
+    (navigate)="navigate()"
+    >
     <form class="login-form" [formGroup]="loginForm">
         <app-primary-input-component
             formControlName="email"
