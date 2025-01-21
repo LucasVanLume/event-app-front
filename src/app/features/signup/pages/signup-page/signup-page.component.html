@@ -1,5 +1,5 @@
 <app-login-component
-    title="Sign in and start today!"
+    title="Cadastrar-se já!"
     primaryButtonText="Cadastrar-se"
     secondaryButtonText="Login"
     (submit)="submit()"
@@ -10,35 +10,35 @@
             formControlName="name"
             inputName="name"
             type="text"
-            label="Your name"
-            placeholder="John Doe"
+            label="Nome"
+            placeholder="Lucas Lima"
         >
-            <!-- <img src="/assets/svg/email-icon.svg"/> -->
+            <mat-icon class="icon" aria-hidden="false" aria-label="person icon" fontIcon="person"></mat-icon>
         </app-primary-input-component>
         <app-primary-input-component
             formControlName="email"
             inputName="email"
             type="email"
             label="Email"
-            placeholder="johndoe@gmail.com"
+            placeholder="event@gmail.com"
         >
-            <!-- <img src="/assets/svg/email-icon.svg"/> -->
+            <mat-icon class="icon" aria-hidden="false" aria-label="email icon" fontIcon="email"></mat-icon>
         </app-primary-input-component>
         <app-primary-input-component
             formControlName="password"
             inputName="password"
             type="password"
-            label="Your Password"
+            label="Senha"
         >
-            <!-- <img src="/assets/svg/password-icon.svg"/> -->
+            <mat-icon class="icon" aria-hidden="false" aria-label="password icon" fontIcon="lock"></mat-icon>
         </app-primary-input-component>
         <app-primary-input-component
             formControlName="passwordConfirm"
             inputName="passwordConfirm"
             type="password"
-            label="Confirm your Password"
+            label="Confirmar senha"
         >
-            <!-- <img src="/assets/svg/password-icon.svg"/> -->
+            <mat-icon class="icon" aria-hidden="false" aria-label="password icon" fontIcon="lock"></mat-icon>
         </app-primary-input-component>
     </form>
 </app-login-component>
