@@ -1,15 +1,7 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormGroupDirective, NgForm, Validators } from '@angular/forms';
-import { ErrorStateMatcher } from '@angular/material/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-import { LoginService } from 'src/app/services/login.service';
-
-// export class MyErrorStateMatcher implements ErrorStateMatcher {
-//   isErrorState(control: FormControl | null, form: FormGroupDirective | NgForm | null): boolean {
-//     const isSubmitted = form && form.submitted;
-//     return !!(control && control.invalid && (control.dirty || control.touched || isSubmitted));
-//   }
-// }
+import { LoginUseCase } from '../../domain/usecases/login.usecase';
 
 @Component({
   selector: 'app-login-page',
@@ -21,7 +13,7 @@ export class LoginPageComponent {
 
   constructor( 
     private router: Router,
-    private loginService: LoginService
+    private loginUseCase: LoginUseCase
   ) {
     this.loginForm = new FormGroup({
       email: new FormControl('', [Validators.required, Validators.email]),
@@ -31,7 +23,7 @@ export class LoginPageComponent {
 
   submit() {
     // if (this.loginForm.valid) {
-      this.loginService.login(this.loginForm.value.email, this.loginForm.value.password).subscribe({
+      this.loginUseCase.execute({ email: this.loginForm.value.email, password: this.loginForm.value.password }).subscribe({
         next: () => {
           console.log("success");
         },
@@ -47,9 +39,5 @@ export class LoginPageComponent {
   navigate() {
     this.router.navigate(["signup"]);
   }
-
-
-  // emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  // matcher = new MyErrorStateMatcher();
 
 }

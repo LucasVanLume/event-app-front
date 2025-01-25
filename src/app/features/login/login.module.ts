@@ -6,6 +6,9 @@ import { MaterialModule } from 'src/app/material.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { LoginService } from 'src/app/services/login.service';
 import { ComponentsSharedModule } from 'src/app/shared/components/components-shared.module';
+import { LoginUseCase } from './domain/usecases/login.usecase';
+import { LoginRepository } from './domain/repositories/login.repository';
+import { LoginRepositoryImpl } from './data/repositories/login-impl.repository';
 
 @NgModule({
   declarations: [
@@ -22,7 +25,9 @@ import { ComponentsSharedModule } from 'src/app/shared/components/components-sha
     ComponentsSharedModule
   ],
   providers: [
-    LoginService
+    LoginService,
+    LoginUseCase,
+    { provide: LoginRepository, useClass: LoginRepositoryImpl },
   ]
 })
 export class LoginModule { }
