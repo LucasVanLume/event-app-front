@@ -1,0 +1,103 @@
+<div class="form-container">
+
+    <form class="form-event">
+        <h2 class="form-title">Add Novo Evento</h2>
+  
+        <form [formGroup]="eventForm" (ngSubmit)="onSubmit()">
+          <!-- Event Banner Card -->
+          <div class="event-banner-card">
+            <div class="image-upload">
+              <input type="file" id="bannerImage" hidden>
+              <label for="bannerImage" class="upload-label">
+                <mat-icon>add_photo_alternate</mat-icon>
+              </label>
+            </div>
+      
+            <div class="event-title-section">
+              <input 
+                matInput
+                maxlength="50"
+                formControlName="eventName"
+                type="text"
+                class="event-title-input" 
+                placeholder="Nome do Seu Evento">
+              <input
+                matInput
+                maxlength="250"
+                formControlName="eventDescription"
+                type="text" 
+                class="event-description-input" 
+                placeholder="Escreva uma pequena descrição para este evento">
+            </div>
+          </div>
+
+          <!-- Event Details Section -->
+          <div class="event-details-section">
+            <h3 class="details-title">DETALHES DO EVENTO</h3>
+                
+            <div class="form-row">
+                <div class="form-group">
+                    <input
+                    formControlName="startTime"
+                    type="time" 
+                    class="form-control">
+                </div>
+                
+                <div class="form-group">
+                    <input 
+                    formControlName="endTime"
+                    type="time" 
+                    class="form-control">
+                </div>
+
+                <mat-form-field class="form-group" appearance="outline">
+                  <mat-label>Período</mat-label>
+                  <mat-date-range-input [rangePicker]="picker">
+                    <input formControlName="startDate" matStartDate placeholder="Início">
+                    <input formControlName="endDate" matEndDate placeholder="Fim">
+                  </mat-date-range-input>
+                  <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                  <mat-date-range-picker #picker></mat-date-range-picker>
+                </mat-form-field>            
+            </div>
+        
+            <div class="form-row">
+              <mat-form-field class="form-group" appearance="outline">
+                <mat-label>Tema</mat-label>
+                <mat-select formControlName="theme">
+                  <mat-option value="tecnologia">Tecnologia</mat-option>
+                  <mat-option value="design">Design</mat-option>
+                </mat-select>
+              </mat-form-field>
+                
+              <mat-form-field class="form-group" appearance="outline">
+                <mat-label>Email</mat-label>
+                <input matInput placeholder="event@example.com" formControlName="email" required>
+                <mat-icon class="input-icon" matSuffix aria-hidden="false" aria-label="email icon" fontIcon="email"></mat-icon>
+              </mat-form-field>
+              
+              <app-phone-input-component class="form-group" formControlName="tel" required></app-phone-input-component>
+            </div>
+        
+            <div class="form-row">
+              <mat-slide-toggle class="toggle-group" formControlName="isRemote" color="var(--blue-main)">Remoto</mat-slide-toggle>
+            </div>
+        
+            <!-- Address Section -->
+            <div class="address-section">
+            </div>
+
+            <div class="form-actions">
+              <button class="btn btn-secondary" mat-raised-button (click)="goBack()">
+                <mat-icon aria-hidden="false" aria-label="arrow icon" fontIcon="keyboard_arrow_left"></mat-icon>
+                Voltar
+              </button>
+              <button class="btn btn-primary" mat-raised-button (click)="onSubmit()">
+                <mat-icon aria-hidden="false" aria-label="add icon" fontIcon="add"></mat-icon>
+                Criar novo evento
+              </button>
+            </div>
+          </div>
+    </form>
+  </form>
+</div>
