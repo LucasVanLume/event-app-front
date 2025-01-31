@@ -27,7 +27,7 @@ import { LoginRepositoryImpl } from './data/repositories/login-impl.repository';
   providers: [
     LoginService,
     LoginUseCase,
-    { provide: LoginRepository, useClass: LoginRepositoryImpl },
+    { provide: LoginRepository, useClass: LoginRepositoryImpl }
   ]
 })
 export class LoginModule { }

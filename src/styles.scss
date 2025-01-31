@@ -34,6 +34,7 @@ $event-app-front-theme: mat.define-light-theme((
 @include mat.all-component-themes($event-app-front-theme);
 
 /* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
 
 html, body { height: 100%; }
 

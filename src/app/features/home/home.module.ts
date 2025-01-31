@@ -5,7 +5,6 @@ import { HomeRoutingModule } from './home-routing.module';
 import { MaterialModule } from 'src/app/material.module';
 import { ComponentsSharedModule } from 'src/app/shared/components/components-shared.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { SideBarComponent } from './components/side-bar/side-bar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FormEventComponent } from './components/form-event/form-event/form-event.component';
 import { AppPhoneMaskDirective } from 'src/app/shared/utils/mask/app-phone-mask.directive';
@@ -15,7 +14,6 @@ import { AppPhoneMaskDirective } from 'src/app/shared/utils/mask/app-phone-mask.
 @NgModule({
   declarations: [
     HomePageComponent,
-    SideBarComponent,
     HeaderComponent,
     FormEventComponent
   ],
