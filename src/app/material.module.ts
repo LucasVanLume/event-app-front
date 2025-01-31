@@ -29,6 +29,9 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
 import { MatTreeModule } from '@angular/material/tree';
 import { MatRippleModule } from '@angular/material/core';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { NgxMaterialTimepickerModule } from 'ngx-material-timepicker';
 
 @NgModule({
   exports: [
@@ -61,7 +64,10 @@ import { MatRippleModule } from '@angular/material/core';
     MatBadgeModule,
     MatBottomSheetModule,
     MatTreeModule,
-    MatRippleModule
+    MatRippleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    NgxMaterialTimepickerModule
   ]
 })
 export class MaterialModule { }
