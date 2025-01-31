@@ -7,8 +7,8 @@ Feature: Login no site de eventos
     Given que estou na página de login
 
   Scenario: Login com credenciais válidas
-    When eu insiro "usuario@evento.com" no campo "email"
-    And eu insiro "senha123" no campo "senha"
+    When eu insiro "lvll@cin.ufpe.br" no campo "email"
+    And eu insiro "123456789" no campo "senha"
     And clico no botão "Entrar"
     Then devo ser redirecionado para "/home"
 
@@ -20,8 +20,8 @@ Feature: Login no site de eventos
     And devo ver a mensagem "Credenciais inválidas, tente novamente."
 
   Scenario: Tentativa de login com campo vazio
-    When eu insiro "" no campo "email"
-    And eu insiro "" no campo "senha"
+    When eu insiro " " no campo "email"
+    And eu insiro " " no campo "senha"
     And clico no botão "Entrar"
     Then devo continuar na página "/login"
     And devo ver a mensagem "Os campos de email e senha são obrigatórios."
