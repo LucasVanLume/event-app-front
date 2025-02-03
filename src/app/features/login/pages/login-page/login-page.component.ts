@@ -26,18 +26,14 @@ export class LoginPageComponent {
   submit() {
     if (this.loginForm.valid) {
       this.loginUseCase.execute({ email: this.loginForm.value.email, password: this.loginForm.value.password }).subscribe({
-        next: () => {
-          console.log("success");
-          this.toastService.success("Login realizado com sucesso!");
+        next: (value) => {
+          this.toastService.success(`Bem vindo, ${value.username}!`);
           this.router.navigate(["home"]);
         },
         error: (error) => {
-          console.log("error");
           this.toastService.error("Credenciais inválidas, tente novamente.");
         }
       });
-      const { email, password } = this.loginForm.value;
-      console.log(email, password);
     } else {
       if (this.loginForm.get('email')?.value === '' || this.loginForm.get('password')?.value === '') {
         this.toastService.error('Os campos de email e senha são obrigatórios.');
