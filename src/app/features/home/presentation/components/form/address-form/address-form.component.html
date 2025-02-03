@@ -1,0 +1,79 @@
+<div class="address-form-container">
+    <h4 class="address-form-title">ENDEREÇO</h4>
+    
+    <div class="address-form-content" [formGroup]="addressForm">
+        <div class="form-row">
+            <mat-form-field class="cep" appearance="outline">
+                <mat-label>CEP</mat-label>
+                <input matInput #postalCode formControlName="cep" maxlength="8" placeholder="ex: 51053055">
+                <mat-icon class="input-icon" matSuffix aria-hidden="false" aria-label="postal code icon" fontIcon="location_on"></mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <mat-form-field class="form-group full-width" appearance="outline">
+              <mat-label>Rua</mat-label>
+              <input matInput formControlName="rua" placeholder="R. Recife">
+              <mat-icon class="input-icon" matSuffix aria-hidden="false" aria-label="street icon" fontIcon="streetview"></mat-icon>
+            </mat-form-field>
+        </div>
+        <div class="form-row">
+            <mat-form-field class="form-group" appearance="outline">
+              <mat-label>Cidade</mat-label>
+              <input matInput formControlName="cidade" type="text" placeholder="Recife">
+              <mat-icon class="input-icon" matSuffix aria-hidden="false" aria-label="city icon" fontIcon="location_city"></mat-icon>
+            </mat-form-field>
+            <mat-form-field class="form-group" appearance="outline">
+                <mat-label>Bairro</mat-label>
+                <input matInput formControlName="bairro" placeholder="Boa Vista">
+                <mat-icon class="input-icon" matSuffix aria-hidden="false" aria-label="city icon" fontIcon="location_city"></mat-icon>
+            </mat-form-field>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="address-container">
+    <h3 class="details-title">ENDEREÇO DO EVENTO</h3>
+  
+    <div class="form-row">
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>CEP</mat-label>
+        <input matInput formControlName="cep" placeholder="00000-000">
+      </mat-form-field>
+  
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Rua</mat-label>
+        <input matInput formControlName="rua" placeholder="Digite o nome da rua">
+      </mat-form-field>
+    </div>
+  
+    <div class="form-row">
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Número</mat-label>
+        <input matInput formControlName="numero" type="text" placeholder="Número">
+      </mat-form-field>
+  
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Bairro</mat-label>
+        <input matInput formControlName="bairro" placeholder="Digite o bairro">
+      </mat-form-field>
+    </div>
+  
+    <div class="form-row">
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Cidade</mat-label>
+        <input matInput formControlName="cidade" placeholder="Digite a cidade">
+      </mat-form-field>
+  
+      <mat-form-field class="form-group" appearance="outline">
+        <mat-label>Estado</mat-label>
+        <mat-select formControlName="estado">
+          <mat-option value="SP">São Paulo</mat-option>
+          <mat-option value="RJ">Rio de Janeiro</mat-option>
+          <mat-option value="MG">Minas Gerais</mat-option>
+          <mat-option value="BA">Bahia</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div> -->
+  
