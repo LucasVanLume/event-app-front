@@ -34,7 +34,9 @@ export class SignupPageComponent {
   }
 
   submit(){
-    if(this.signupForm.valid) {
+    if (this.signupForm.get('passwordConfirm')?.value !== this.signupForm.get('password')?.value) {
+      this.toastService.error('As senhas não coincidem.');
+    } else if(this.signupForm.valid) {
       const userSignupEntity = new UserSignupEntity(
         this.signupForm.value.name,
         this.signupForm.value.email,
@@ -43,12 +45,10 @@ export class SignupPageComponent {
       );
       this.registerUserUseCase.execute(userSignupEntity).subscribe({
         next: () => {
-          console.log("success");
           this.toastService.success('Cadastro realizado com sucesso.');
           this.navigate();
         },
         error: () => {
-          console.log("error");
           this.toastService.error('Credenciais inválidas, tente novamente.');
         }
       });
@@ -64,8 +64,6 @@ export class SignupPageComponent {
         this.toastService.error('Por favor, insira um email válido.');
       } else if (this.signupForm.get('password')?.invalid) {
         this.toastService.error('A senha deve conter pelo menos 6 caracteres.');
-      } else if (this.signupForm.get('passwordConfirm')?.value !== this.signupForm.get('password')?.value) {
-        this.toastService.error('As senhas não coincidem.');
       }
     }
   }
