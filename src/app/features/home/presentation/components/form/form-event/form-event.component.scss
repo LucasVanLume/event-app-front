@@ -98,13 +98,13 @@
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
         justify-content: center;
         margin-bottom: 24px;
         
         .details-title {
             align-self: flex-start;
-            color: #6b7280;
+            color: var(--medium-text);
             font-size: 12px;
             font-weight: 600;
             margin-bottom: 16px;
@@ -120,7 +120,7 @@
             .toggle-group {
                 font-size: 16px;
                 color: var(--blue-main);
-                margin-bottom: 4px;
+                margin-bottom: 14px;
             }
 
             .form-group {
@@ -153,6 +153,12 @@
                     }
                 }
             }
+        }
+
+        .address-section {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
         }
 
         .form-actions {
