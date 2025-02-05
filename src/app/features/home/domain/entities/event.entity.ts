@@ -1,0 +1,48 @@
+import { AddressEntity } from "./address.entity";
+
+export class EventEntity {
+    id: string;
+    title: string;
+    description: string;
+    imgUrl: string;
+    eventUrl: string;
+    startTime: string;
+    endTime: string;
+    date: string;
+    theme: string;
+    email: string;
+    phone: string;
+    remote: boolean;
+    address: AddressEntity;
+  
+    constructor(
+      id: string,
+      title: string,
+      description: string,
+      imgUrl: string,
+      eventUrl: string,
+      startTime: string,
+      endTime: string,
+      date: string,
+      theme: string,
+      email: string,
+      phone: string,
+      remote: boolean,
+      address: AddressEntity
+    ) {
+      this.id = id;
+      this.title = title;
+      this.description = description;
+      this.imgUrl = imgUrl;
+      this.eventUrl = eventUrl;
+      this.startTime = startTime;
+      this.endTime = endTime;
+      this.date = date;
+      this.theme = theme;
+      this.email = email;
+      this.phone = phone;
+      this.remote = remote;
+      this.address = address;
+    }
+  }
+  
