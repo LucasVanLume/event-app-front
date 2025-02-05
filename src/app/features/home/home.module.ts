@@ -12,6 +12,7 @@ import { AddressFormComponent } from './presentation/components/form/address-for
 import { GetAddressUseCase } from './domain/usecases/get-address.usecase';
 import { HomeRepository } from './domain/repositories/home.repository';
 import { HomeRepositoryImpl } from './data/repositories/home-impl.repository';
+import { CreateEventUseCase } from './domain/usecases/create-event.usecase';
 
 
 
@@ -36,6 +37,7 @@ import { HomeRepositoryImpl } from './data/repositories/home-impl.repository';
     AppPhoneMaskDirective,
 
     GetAddressUseCase,
+    CreateEventUseCase,
     { provide: HomeRepository, useClass: HomeRepositoryImpl }
   ],
 })

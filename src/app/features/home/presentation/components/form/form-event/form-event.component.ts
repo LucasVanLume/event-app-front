@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime, switchMap, catchError, of, distinctUntilChanged, filter, take } from 'rxjs';
 import { AddressEntity } from 'src/app/features/home/domain/entities/address.entity';
+import { EventEntity } from 'src/app/features/home/domain/entities/event.entity';
+import { CreateEventUseCase } from 'src/app/features/home/domain/usecases/create-event.usecase';
 import { GetAddressUseCase } from 'src/app/features/home/domain/usecases/get-address.usecase';
 
 @Component({
@@ -18,7 +20,8 @@ export class FormEventComponent implements OnInit {
   constructor(
     private toastService: ToastrService,
     private fb: FormBuilder,
-    private getAddressUseCase: GetAddressUseCase
+    private getAddressUseCase: GetAddressUseCase,
+    private createEventUseCase: CreateEventUseCase
   ) {
     this.addressForm = this.fb.group({
       cep: ['', [Validators.required, Validators.minLength(8)]],
@@ -85,6 +88,31 @@ export class FormEventComponent implements OnInit {
         ...this.eventForm.getRawValue(),
         address: this.addressForm.getRawValue()
       };
+
+      const eventEntity = new EventEntity(
+        formData.id,
+        formData.eventName,
+        formData.eventDescription,
+        formData.imgUrl,
+        formData.eventUrl,
+        formData.startTime,
+        formData.endTime,
+        `${formData.startDate}-${formData.endDate}`,
+        formData.theme,
+        formData.email,
+        formData.tel,
+        formData.isRemote,
+        formData.address
+      );
+
+      this.createEventUseCase.execute(eventEntity).subscribe({
+        next: (event) => {
+          console.log('Evento criado com sucesso:', event);
+        },
+        error: (err) => {
+          console.error('Erro ao criar evento:', err);
+        },
+      });
   
       console.log(formData);
     } else {
