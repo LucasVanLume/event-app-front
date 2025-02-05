@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent {
+  username: string = '';
+  token: string = '';
 
+  constructor() { }
+
+  ngOnInit() {
+    const user = history.state.user;
+
+    this.username = user.username;
+    this.token = user.token;
+  }
 }

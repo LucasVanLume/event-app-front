@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-header',
@@ -6,17 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-logout() {
-throw new Error('Method not implemented.');
-}
-navigateToProfile() {
-throw new Error('Method not implemented.');
-}
-  name: string = "Lucas";
+  @Input() username: string = "";
+  @Input() token: string = "";
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
+  logout() {
+    throw new Error('Method not implemented.');
+  }
+
+  navigateToProfile() {
+    throw new Error('Method not implemented.');
+  }
 }
