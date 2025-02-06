@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime, switchMap, catchError, of, distinctUntilChanged, filter, take } from 'rxjs';
@@ -14,6 +14,7 @@ import { GetAddressUseCase } from 'src/app/features/home/domain/usecases/get-add
 })
 export class FormEventComponent implements OnInit {
   @Input() userId: string = "";
+  @Output() eventCreated = new EventEmitter<EventEntity>();
 
   eventForm: FormGroup;
   addressForm: FormGroup;
@@ -36,8 +37,8 @@ export class FormEventComponent implements OnInit {
       eventDescription: ['', [Validators.required]],
       startTime: ['', [Validators.required]],
       endTime: ['', [Validators.required]],
-      startDate: ['', [Validators.required]],
-      endDate: ['', [Validators.required]],
+      startDate: [null, [Validators.required]],
+      endDate: [null, [Validators.required]],
       tel: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
       isRemote: [false],
@@ -98,7 +99,7 @@ export class FormEventComponent implements OnInit {
         formData.eventUrl,
         formData.startTime,
         formData.endTime,
-        `${formData.startDate}-${formData.endDate}`,
+        formData.date,
         formData.theme,
         formData.email,
         formData.tel,
@@ -108,8 +109,9 @@ export class FormEventComponent implements OnInit {
       );
 
       this.createEventUseCase.execute(eventEntity).subscribe({
-        next: (event) => {
-          console.log('Evento criado com sucesso:', event);
+        next: (createdEvent) => {
+          console.log('Evento criado com sucesso:', createdEvent);
+          this.eventCreated.emit(createdEvent);
         },
         error: (err) => {
           console.error('Erro ao criar evento:', err);

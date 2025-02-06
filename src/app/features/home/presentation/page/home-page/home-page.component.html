@@ -2,6 +2,6 @@
     <app-header [username]="username"></app-header>
     <div class="home-content">
         <app-events-list [userId]="userId"></app-events-list>
-        <app-form-event class="form-event" [userId]="userId"></app-form-event>
+        <app-form-event class="form-event" [userId]="userId" (eventCreated)="onEventCreated($event)"></app-form-event>
     </div>
 </div>
