@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { debounceTime, switchMap, catchError, of, distinctUntilChanged, filter, take } from 'rxjs';
@@ -13,6 +13,7 @@ import { GetAddressUseCase } from 'src/app/features/home/domain/usecases/get-add
   styleUrls: ['./form-event.component.scss']
 })
 export class FormEventComponent implements OnInit {
+  @Input() userId: string = "";
 
   eventForm: FormGroup;
   addressForm: FormGroup;
@@ -102,7 +103,8 @@ export class FormEventComponent implements OnInit {
         formData.email,
         formData.tel,
         formData.isRemote,
-        formData.address
+        formData.address,
+        this.userId
       );
 
       this.createEventUseCase.execute(eventEntity).subscribe({

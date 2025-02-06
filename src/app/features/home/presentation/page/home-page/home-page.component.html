@@ -1,7 +1,7 @@
 <div class="home-container">
-    <app-header [username]="username" [token]="token"></app-header>
+    <app-header [username]="username"></app-header>
     <div class="home-content">
-        <app-events-list></app-events-list>
-        <app-form-event class="form-event"></app-form-event>
+        <app-events-list [userId]="userId"></app-events-list>
+        <app-form-event class="form-event" [userId]="userId"></app-form-event>
     </div>
 </div>
