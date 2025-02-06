@@ -1,0 +1,49 @@
+.address-form-container {
+    display: flex;
+    flex-direction: column;
+
+    .address-form-title {
+        align-self: flex-start;
+        color: var(--medium-text);
+        font-size: 12px;
+        font-weight: 600;
+        margin-bottom: 16px;
+        letter-spacing: 0.05em;
+    }
+
+    .address-form-content {
+        max-width: 800px;
+        width: 100%;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 24px;
+
+        .form-row {
+            display: flex;
+            width: 100%;
+            gap: 16px;
+            margin-bottom: 16px;
+
+            .cep {
+                flex: 1;
+                max-width: 256px;
+            }
+
+            .form-group {
+                flex: 1;
+                
+                &.full-width {
+                    flex: 2;
+                }
+            }
+
+            .input-icon {
+                color: var(--grey-icon);
+            }
+        }
+    }
+
+}

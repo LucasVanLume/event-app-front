@@ -1,0 +1,23 @@
+<main class="login-main">
+    <section class="login-section">
+        <img class="logo" src="assets/images/svg/logo-dark.svg" alt="event-app">
+        <h2 class="title">{{ title }}</h2>
+
+        <ng-content></ng-content>
+
+        <div class="btn-wrapper">
+            <button class="btn-primary" (click)="submit()" mat-raised-button>{{ primaryButtonText }}</button>
+            <div class="divider-wrapper">
+                <mat-divider></mat-divider>
+                <span>OU</span>
+                <mat-divider></mat-divider>
+            </div>
+            <button class="btn-secondary" (click)="navigate()" mat-raised-button>{{ secondaryButtonText }}</button>
+        </div>
+    </section>
+
+    <section class="image-section">
+        <h2 class="slogan">Where great moments begin!</h2>
+        <img class="event-ilustration" src="assets/images/png/event-ilustration.png" alt="">
+    </section>
+</main>

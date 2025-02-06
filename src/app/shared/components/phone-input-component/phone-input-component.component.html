@@ -1,0 +1,16 @@
+<mat-form-field class="phone-input" appearance="outline">
+    <mat-label>{{ label }}</mat-label>
+    <input
+      class="phone-input"
+      matInput
+      type="text"
+      [placeholder]="placeholder"
+      [value]="value"
+      (input)="onInput($event)"
+      (keydown)="onKeyDown($event)"
+      maxlength="15"
+    />
+    <mat-icon matSuffix aria-hidden="false" aria-label="phone icon" fontIcon="phone"></mat-icon>
+</mat-form-field>
+  
+  

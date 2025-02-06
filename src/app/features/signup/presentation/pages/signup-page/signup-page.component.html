@@ -1,0 +1,48 @@
+<app-login-component
+    title="Cadastrar-se já!"
+    primaryButtonText="Cadastrar-se"
+    secondaryButtonText="Login"
+    (submit)="submit()"
+    (navigate)="navigate()"
+>
+    <form [formGroup]="signupForm">
+        <app-primary-input-component
+            formControlName="name"
+            inputName="name"
+            type="text"
+            label="Nome"
+            placeholder="Lucas Lima"
+            data-cy="nome"
+        >
+            <mat-icon class="icon" aria-hidden="false" aria-label="person icon" fontIcon="person"></mat-icon>
+        </app-primary-input-component>
+        <app-primary-input-component
+            formControlName="email"
+            inputName="email"
+            type="email"
+            label="Email"
+            placeholder="event@gmail.com"
+            data-cy="email"
+        >
+            <mat-icon class="icon" aria-hidden="false" aria-label="email icon" fontIcon="email"></mat-icon>
+        </app-primary-input-component>
+        <app-primary-input-component
+            formControlName="password"
+            inputName="password"
+            type="password"
+            label="Senha"
+            data-cy="senha"
+        >
+            <mat-icon class="icon" aria-hidden="false" aria-label="password icon" fontIcon="lock"></mat-icon>
+        </app-primary-input-component>
+        <app-primary-input-component
+            formControlName="passwordConfirm"
+            inputName="passwordConfirm"
+            type="password"
+            label="Confirmar senha"
+            data-cy="confirmarSenha"
+        >
+            <mat-icon class="icon" aria-hidden="false" aria-label="password icon" fontIcon="lock"></mat-icon>
+        </app-primary-input-component>
+    </form>
+</app-login-component>

@@ -1,1 +1,64 @@
+
+// Custom Theming for Angular Material
+// For more information: https://material.angular.io/guide/theming
+@use '@angular/material' as mat;
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat.core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://material.io/design/color/
+$event-app-front-primary: mat.define-palette(mat.$indigo-palette);
+$event-app-front-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+// The warn palette is optional (defaults to red).
+$event-app-front-warn: mat.define-palette(mat.$red-palette);
+
+// Create the theme object. A theme consists of configurations for individual
+// theming systems such as "color" or "typography".
+$event-app-front-theme: mat.define-light-theme((
+  color: (
+    primary: $event-app-front-primary,
+    accent: $event-app-front-accent,
+    warn: $event-app-front-warn,
+  )
+));
+
+// Include theme styles for core and each component used in your app.
+// Alternatively, you can import and @include the theme mixins for each component
+// that you are using.
+@include mat.all-component-themes($event-app-front-theme);
+
 /* You can add global styles to this file, and also import other style files */
+@import 'ngx-toastr/toastr';
+
+html, body { height: 100%; }
+
+* { 
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Inter", sans-serif; 
+}
+
+:root {
+  --dark-text: #1C2A3A;
+  --light-text: #91A4B7;
+  --medium-text: #445668;
+
+  --background: #E5E5E5;
+
+  --blue-main: #2051E5;
+  --blue-dark: #1C2A3A;
+  --blue-light: #F4F6FD;
+  --green-main: #16AD4D;
+  --green-light: #E8F7EE;
+  --yellow-main: #F77307;
+  --yellow-light: #FFF1E7;
+  --grey-main: #EEEEEE;
+  --grey-icon: grey;
+}
