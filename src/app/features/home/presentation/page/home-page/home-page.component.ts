@@ -8,6 +8,7 @@ import { Component } from '@angular/core';
 export class HomePageComponent {
   username: string = '';
   token: string = '';
+  userId: string = '';
 
   constructor() { }
 
@@ -16,5 +17,6 @@ export class HomePageComponent {
 
     this.username = user.username;
     this.token = user.token;
+    this.userId = user.userId;
   }
 }

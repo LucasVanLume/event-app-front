@@ -67,8 +67,13 @@
   }
 
   .events-list {
-    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     max-height: 866px;
+    overflow-y: auto;
+
+    padding-left: 24px;
     
     .event-item {
       padding: 12px 16px;

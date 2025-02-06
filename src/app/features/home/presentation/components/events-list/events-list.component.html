@@ -22,8 +22,9 @@
 
   <div class="events-list">
     <div *ngFor="let event of filteredEvents" class="event-item">
-      <h3>{{ event.name }}</h3>
-      <p class="event-date">{{ event.date | date:'dd MMM yyyy' }}</p>
+      <h3>{{ event.title }}</h3>
+      <p class="event-date">{{ event.theme }}</p>
+      <!-- <p class="event-date">{{ event.date| date:'dd MMM yyyy' }}</p> -->
     </div>
   </div>
 </div>
