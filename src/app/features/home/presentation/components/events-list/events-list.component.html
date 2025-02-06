@@ -1,0 +1,29 @@
+<div class="events-container">
+  <div class="events-header">
+    <h2>Eventos</h2>
+  </div>
+
+  <div class="search-section">
+    <mat-form-field class="search-field" appearance="outline">
+      <mat-icon class="search-icon" matPrefix>search</mat-icon>
+      <input matInput
+              placeholder="Busque eventos..." 
+              [(ngModel)]="searchTerm"
+              (input)="searchEvents()">
+    </mat-form-field>
+    <button mat-mini-fab class="add-button" (click)="addNewEvent()">
+      <mat-icon>add</mat-icon>
+    </button>
+  </div>
+
+  <div class="records-count">
+    {{ filteredEvents.length }} eventos achados
+  </div>
+
+  <div class="events-list">
+    <div *ngFor="let event of filteredEvents" class="event-item">
+      <h3>{{ event.name }}</h3>
+      <p class="event-date">{{ event.date | date:'dd MMM yyyy' }}</p>
+    </div>
+  </div>
+</div>

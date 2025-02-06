@@ -1,4 +1,7 @@
 <div class="home-container">
     <app-header [username]="username" [token]="token"></app-header>
-    <app-form-event></app-form-event>
+    <div class="home-content">
+        <app-events-list></app-events-list>
+        <app-form-event class="form-event"></app-form-event>
+    </div>
 </div>

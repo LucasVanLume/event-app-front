@@ -13,6 +13,7 @@ import { GetAddressUseCase } from './domain/usecases/get-address.usecase';
 import { HomeRepository } from './domain/repositories/home.repository';
 import { HomeRepositoryImpl } from './data/repositories/home-impl.repository';
 import { CreateEventUseCase } from './domain/usecases/create-event.usecase';
+import { EventsListComponent } from './presentation/components/events-list/events-list.component';
 
 
 
@@ -21,7 +22,8 @@ import { CreateEventUseCase } from './domain/usecases/create-event.usecase';
     HomePageComponent,
     HeaderComponent,
     FormEventComponent,
-    AddressFormComponent
+    AddressFormComponent,
+    EventsListComponent
   ],
   imports: [
     CommonModule,
