@@ -14,6 +14,7 @@ export class EventEntity {
     phone: string;
     remote: boolean;
     address: AddressEntity;
+    userId: string;
   
     constructor(
       id: string,
@@ -28,7 +29,8 @@ export class EventEntity {
       email: string,
       phone: string,
       remote: boolean,
-      address: AddressEntity
+      address: AddressEntity,
+      userId: string
     ) {
       this.id = id;
       this.title = title;
@@ -43,6 +45,7 @@ export class EventEntity {
       this.phone = phone;
       this.remote = remote;
       this.address = address;
+      this.userId = userId;
     }
   }
   

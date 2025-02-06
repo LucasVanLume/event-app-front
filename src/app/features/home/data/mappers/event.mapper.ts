@@ -1,6 +1,7 @@
 import { AddressEntity } from "../../domain/entities/address.entity";
 import { EventEntity } from "../../domain/entities/event.entity";
 import { EventRequestModel } from "../models/request/event-request.model";
+import { EventResponseModel } from "../models/response/event-response.model";
 
 
 export class EventMapper {
@@ -22,23 +23,25 @@ export class EventMapper {
     );
   }
 
-  static toEntity(eventRequest: EventRequestModel): EventEntity {
+  static toEntity(eventResponse: EventResponseModel): EventEntity {
     const address = new AddressEntity("", "", "", "");
+    const userId = eventResponse.userId;
 
     return new EventEntity(
-      eventRequest.id,
-      eventRequest.title,
-      eventRequest.description,
-      eventRequest.imgUrl,
-      eventRequest.eventUrl,
-      eventRequest.startTime,
-      eventRequest.endTime,
-      eventRequest.date,
-      eventRequest.theme,
-      eventRequest.email,
-      eventRequest.phone,
-      eventRequest.remote,
-      address
+      eventResponse.id,
+      eventResponse.title,
+      eventResponse.description,
+      eventResponse.imgUrl,
+      eventResponse.eventUrl,
+      eventResponse.startTime,
+      eventResponse.endTime,
+      eventResponse.date,
+      eventResponse.theme,
+      eventResponse.email,
+      eventResponse.phone,
+      eventResponse.remote,
+      address,
+      userId
     );
   }
 }

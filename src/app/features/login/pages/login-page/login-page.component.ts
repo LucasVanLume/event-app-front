@@ -28,7 +28,7 @@ export class LoginPageComponent {
       this.loginUseCase.execute({ email: this.loginForm.value.email, password: this.loginForm.value.password }).subscribe({
         next: (value) => {
           this.toastService.success(`Bem vindo, ${value.username}!`);
-          this.router.navigate(['/home'], { state: { user: { username: value.username, token: value.token } } });
+          this.router.navigate(['/home'], { state: { user: { username: value.username, token: value.token, userId: value.id } } });
         },
         error: (error) => {
           this.toastService.error("Credenciais inválidas, tente novamente.");

@@ -14,6 +14,7 @@ import { HomeRepository } from './domain/repositories/home.repository';
 import { HomeRepositoryImpl } from './data/repositories/home-impl.repository';
 import { CreateEventUseCase } from './domain/usecases/create-event.usecase';
 import { EventsListComponent } from './presentation/components/events-list/events-list.component';
+import { GetAllEventsUseCase } from './domain/usecases/get-all-events.usecase';
 
 
 
@@ -40,6 +41,7 @@ import { EventsListComponent } from './presentation/components/events-list/event
 
     GetAddressUseCase,
     CreateEventUseCase,
+    GetAllEventsUseCase,
     { provide: HomeRepository, useClass: HomeRepositoryImpl }
   ],
 })

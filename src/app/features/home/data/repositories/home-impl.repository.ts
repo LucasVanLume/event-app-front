@@ -5,12 +5,15 @@ import { HomeRepository } from '../../domain/repositories/home.repository';
 import { AddressMapper } from '../mappers/address.mapper';
 import { HomeDataSource } from '../datasource/home.datasource';
 import { EventEntity } from '../../domain/entities/event.entity';
+import { EventMapper } from '../mappers/event.mapper';
+import { EventResponseModel } from '../models/response/event-response.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HomeRepositoryImpl implements HomeRepository {
   private addressMapper = new AddressMapper();
+  private eventMapper = new EventMapper();
 
   constructor(private homeDataSource: HomeDataSource) { }
 
@@ -24,6 +27,16 @@ export class HomeRepositoryImpl implements HomeRepository {
     return this.homeDataSource.createEvent(params.eventEntity).pipe(
       map(response => {
         return response;
+      })
+    );
+  }
+
+  getAllEvents(): Observable<EventEntity[]> {
+    return this.homeDataSource.getAllEvents().pipe(
+      map((eventResponseModels: EventResponseModel[]) => {
+        return eventResponseModels.map(eventResponse =>
+          EventMapper.toEntity(eventResponse)
+        );
       })
     );
   }
