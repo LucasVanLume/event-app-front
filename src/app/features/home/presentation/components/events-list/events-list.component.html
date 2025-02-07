@@ -11,7 +11,7 @@
               [(ngModel)]="searchTerm"
               (input)="searchEvents()">
     </mat-form-field>
-    <button mat-mini-fab class="add-button" (click)="addNewEvent()">
+    <button mat-mini-fab class="add-button" (click)="onNewEventClick()">
       <mat-icon>add</mat-icon>
     </button>
   </div>
@@ -21,7 +21,7 @@
   </div>
 
   <div class="events-list">
-    <div *ngFor="let event of filteredEvents" class="event-item">
+    <div *ngFor="let event of filteredEvents" class="event-item" (click)="onEventClick(event)">
       <h3>{{ event.title }}</h3>
       <p class="event-date">{{ event.theme }}</p>
       <!-- <p class="event-date">{{ event.date| date:'dd MMM yyyy' }}</p> -->

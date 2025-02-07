@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 import { EventEntity } from "../../../domain/entities/event.entity";
 import { GetAllEventsUseCase } from "../../../domain/usecases/get-all-events.usecase";
 
@@ -10,6 +10,8 @@ import { GetAllEventsUseCase } from "../../../domain/usecases/get-all-events.use
 })
 export class EventsListComponent implements OnInit {
   @Input() userId: string = "";
+  @Output() eventSelected = new EventEmitter<EventEntity>();
+  @Output() addEvent = new EventEmitter<void>();
   
   searchTerm = "";
   events: EventEntity[] = [];
@@ -44,7 +46,11 @@ export class EventsListComponent implements OnInit {
     );
   }
 
-  addNewEvent() {
-    console.log("Add new event clicked");
+  onEventClick(event: EventEntity) {
+    this.eventSelected.emit(event);
+  }
+
+  onNewEventClick() {
+    this.addEvent.emit();
   }
 }

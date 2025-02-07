@@ -10,6 +10,7 @@ import { EventEntity } from '../../../domain/entities/event.entity';
 export class HomePageComponent {
   @ViewChild(EventsListComponent) eventsListComponent!: EventsListComponent;
   
+  showForm: boolean = true;
   username: string = '';
   token: string = '';
   userId: string = '';
@@ -26,6 +27,15 @@ export class HomePageComponent {
 
   onEventCreated(event: EventEntity) {
     this.eventsListComponent.filteredEvents.unshift(event);
+  }
+
+  onNewEventForm() {
+    this.showForm = true;
+  }
+
+  onEventSelected(event: EventEntity) {
+    console.log("Evento selecionado:", event);
+    this.showForm = false;
   }
 
 }
