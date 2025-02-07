@@ -11,6 +11,8 @@ export class HomePageComponent {
   @ViewChild(EventsListComponent) eventsListComponent!: EventsListComponent;
   
   showForm: boolean = true;
+  selectedEvent!: EventEntity;
+
   username: string = '';
   token: string = '';
   userId: string = '';
@@ -35,6 +37,7 @@ export class HomePageComponent {
 
   onEventSelected(event: EventEntity) {
     console.log("Evento selecionado:", event);
+    this.selectedEvent = event;
     this.showForm = false;
   }
 

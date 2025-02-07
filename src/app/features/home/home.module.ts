@@ -15,7 +15,7 @@ import { HomeRepositoryImpl } from './data/repositories/home-impl.repository';
 import { CreateEventUseCase } from './domain/usecases/create-event.usecase';
 import { EventsListComponent } from './presentation/components/events-list/events-list.component';
 import { GetAllEventsUseCase } from './domain/usecases/get-all-events.usecase';
-import { EventViewComponent } from './presentation/components/event-view.component.ts/event-view.component.ts.component';
+import { EventViewComponent } from './presentation/components/event-view/event-view.component.ts.component';
 
 
 

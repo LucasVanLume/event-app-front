@@ -2,7 +2,7 @@
     <app-header [username]="username"></app-header>
     <div class="home-content">
         <app-events-list [userId]="userId" (eventSelected)="onEventSelected($event)" (addEvent)="onNewEventForm()"></app-events-list>
-        <app-event-view class="form-event" *ngIf="!showForm"></app-event-view>
+        <app-event-view class="form-event" *ngIf="!showForm" [event]="selectedEvent"></app-event-view>
         <app-form-event class="form-event" *ngIf="showForm" [userId]="userId" (eventCreated)="onEventCreated($event)"></app-form-event>
     </div>
 </div>
