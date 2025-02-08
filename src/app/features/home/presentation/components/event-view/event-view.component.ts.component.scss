@@ -30,7 +30,6 @@
       border-radius: 16px;
       background: var(--blue-dark);
       position: relative;
-      // overflow: hidden;
   
       .event-banner {
         position: absolute;
@@ -59,73 +58,71 @@
     }
 
     .grid-container {
-      max-width: 800px;
+      max-width: 600px;
       width: 100%;
       margin: 0 auto;
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
-      margin-bottom: 24px;
+      justify-content: center;
+      margin-bottom: 16px;
 
       .content-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+        width: 100%;
         margin: 24px 0;
       }
-      
+
       .info-section {
         display: flex;
         flex-direction: column;
         gap: 24px;
       }
-      
+
       .info-item {
         display: flex;
-        gap: 16px;
+        flex-direction: row;
         align-items: flex-start;
+        justify-content: flex-start;
+        gap: 16px;
       
         mat-icon {
-          color: rgba(0, 0, 0, 0.54);
+          color: var(--grey-icon);
         }
       
         .info-text {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-start;
+          gap: 6px;
+
           h3 {
-            margin: 0 0 4px 0;
             font-size: 16px;
             font-weight: 500;
-            color: rgba(0, 0, 0, 0.87);
+            color: var(--dark-text);
           }
       
           p {
             margin: 0;
-            color: rgba(0, 0, 0, 0.54);
+            font-size: 15px;
+            color: var(--medium-text);
           }
         }
-      }
+      }      
       
       .divider {
-        margin: 32px 0 24px;
+        margin: 24px 0;
       }
-      
-      h2 {
-        font-size: 20px;
+
+      .location-title {
+        font-size: 16px;
         font-weight: 500;
-        margin-bottom: 24px;
+        color: var(--medium-text);
       }
-      
-      .location-grid {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
-      }
-    }
-    
-    @media (max-width: 600px) {
-      .content-grid,
-      .location-grid {
-        grid-template-columns: 1fr;
-      }
+
     }
   
 }

@@ -50,25 +50,28 @@
         </div>
       </div>
 
-
       <mat-divider class="divider"></mat-divider>
 
-      <h2>Localização do Evento</h2>
-      <div class="location-grid">
-        <div class="info-item">
-          <mat-icon>location_on</mat-icon>
-          <div class="info-text">
-            <h3>Endereço</h3>
-            <p>{{event.address.rua}}</p>
+      <h2 class="location-title">Localização do Evento</h2>
+      <div class="content-grid">
+        <div class="info-section">
+          <div class="info-item">
+            <mat-icon>location_on</mat-icon>
+            <div class="info-text">
+              <h3>Endereço</h3>
+              <p>{{event.address.rua}}</p>
+            </div>
           </div>
         </div>
-
-        <div class="info-item">
-          <mat-icon>location_city</mat-icon>
-          <div class="info-text">
-            <h3>Localidade</h3>
-            <p>{{event.address.cidade}}</p>
-            <p>{{event.address.cep}}</p>
+        
+        <div class="info-section">
+          <div class="info-item">
+            <mat-icon>location_city</mat-icon>
+            <div class="info-text">
+              <h3>Localidade</h3>
+              <p>{{event.address.cidade}}</p>
+              <p>{{event.address.cep}}</p>
+            </div>
           </div>
         </div>
       </div>
