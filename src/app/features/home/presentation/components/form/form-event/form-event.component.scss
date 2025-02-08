@@ -125,6 +125,7 @@
 
             .form-group {
                 flex: 1;
+                position: relative;
                 
                 &.full-width {
                     flex: 2;
@@ -133,6 +134,17 @@
                 .input-icon {
                     color: var(--grey-icon);
                 }
+
+                .floating-label {
+                    position: absolute;
+                    top: -6px;
+                    left: 10px;
+                    padding: 0 4px;
+                    background-color: white;
+                    color: var(--medium-text);
+                    font-size: 11.5px;
+                    line-height: 1;
+                  }
 
                 .form-control {
                     width: 100%;
@@ -148,9 +160,21 @@
                     
                     &:focus {
                       outline: none;
-                      border-color: #3b82f6;
-                      box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+                      border: 2px solid;
+                      border-color: var(--blue-main);
                     }
+
+                    &.ng-invalid.ng-touched {
+                        border-color: var(--red-error);
+                    }
+                }
+
+                &:focus-within .floating-label {
+                    color: var(--blue-main);
+                }
+
+                &:has(.form-control.ng-invalid.ng-touched) .floating-label {
+                    color: var(--red-error);
                 }
             }
         }
