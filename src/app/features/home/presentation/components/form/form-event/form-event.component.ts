@@ -1,7 +1,7 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { debounceTime, switchMap, catchError, of, distinctUntilChanged, filter, take } from 'rxjs';
+import { debounceTime, switchMap, catchError, of, distinctUntilChanged, filter, take, forkJoin, timer } from 'rxjs';
 import { AddressEntity } from 'src/app/features/home/domain/entities/address.entity';
 import { EventEntity } from 'src/app/features/home/domain/entities/event.entity';
 import { CreateEventUseCase } from 'src/app/features/home/domain/usecases/create-event.usecase';
@@ -18,6 +18,7 @@ export class FormEventComponent implements OnInit {
 
   eventForm: FormGroup;
   addressForm: FormGroup;
+  isLoadingCep: boolean = false;
 
   constructor(
     private toastService: ToastrService,
@@ -52,13 +53,19 @@ export class FormEventComponent implements OnInit {
       debounceTime(500),
       distinctUntilChanged(),
       filter(cep => cep.length === 8),
-      switchMap(cep => this.getAddressUseCase.execute(cep).pipe(
-        take(1),
-        catchError(() => {
-          return of(null);
-        })
-      ))
-    ).subscribe(address => {
+      switchMap(cep => {
+        this.isLoadingCep = true;
+
+        return forkJoin({
+          address: this.getAddressUseCase.execute(cep).pipe(
+            take(1),
+            catchError(() => of(null))
+          ),
+          delay: timer(1000)
+        });
+      })
+    ).subscribe(({ address }) => {
+      this.isLoadingCep = false;
       if (address) {
         this.populateAddressFields(address);
       } else {

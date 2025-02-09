@@ -8,6 +8,7 @@
                 <input matInput #postalCode formControlName="cep" maxlength="8" placeholder="ex: 51053055">
                 <mat-icon class="input-icon" matSuffix aria-hidden="false" aria-label="postal code icon" fontIcon="location_on"></mat-icon>
             </mat-form-field>
+            <mat-spinner [diameter]="30" *ngIf="isLoadingCep" class="loader"></mat-spinner>
         </div>
         <div class="form-row">
             <mat-form-field class="form-group full-width" appearance="outline">
