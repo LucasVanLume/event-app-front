@@ -8,7 +8,8 @@ export class EventEntity {
     eventUrl: string;
     startTime: string;
     endTime: string;
-    date: string;
+    startDate: string;
+    endDate: string;
     theme: string;
     email: string;
     phone: string;
@@ -24,7 +25,8 @@ export class EventEntity {
       eventUrl: string,
       startTime: string,
       endTime: string,
-      date: string,
+      startDate: string,
+      endDate: string,
       theme: string,
       email: string,
       phone: string,
@@ -39,7 +41,8 @@ export class EventEntity {
       this.eventUrl = eventUrl;
       this.startTime = startTime;
       this.endTime = endTime;
-      this.date = date;
+      this.startDate = startDate;
+      this.endDate = endDate;
       this.theme = theme;
       this.email = email;
       this.phone = phone;
