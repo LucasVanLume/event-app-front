@@ -7,11 +7,11 @@ import { Injectable } from "@angular/core";
 @Injectable({
   providedIn: 'root',
 })
-export class GetAllEventsUseCase implements UseCase<void, EventEntity[]> {
+export class GetAllEventsUseCase implements UseCase<{ page: number, size: number }, { events: EventEntity[], totalPages: number, totalElements: number }> {
   constructor(private homeRepository: HomeRepository) {}
 
-  execute(): Observable<EventEntity[]> {
-    return this.homeRepository.getAllEvents().pipe(
+  execute(params: { page: number, size: number }): Observable<{ events: EventEntity[], totalPages: number, totalElements: number }> {
+    return this.homeRepository.getAllEvents(params.page, params.size).pipe(
       catchError(error => {
         const applicationError = new Error('Failed to get all events');
         return throwError(() => applicationError);

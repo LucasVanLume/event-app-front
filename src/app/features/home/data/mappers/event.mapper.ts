@@ -2,11 +2,12 @@ import { AddressEntity } from "../../domain/entities/address.entity";
 import { EventEntity } from "../../domain/entities/event.entity";
 import { EventRequestModel } from "../models/request/event-request.model";
 import { EventResponseModel } from "../models/response/event-response.model";
+import { PageEventResponseModel } from "../models/response/page-event-response.model";
 
 
 export class EventMapper {
   static toRequestModel(eventEntity: EventEntity): EventRequestModel {
-    const { address, ...eventData } = eventEntity; // Desestrutura o address, removendo-o do objeto
+    const { address, ...eventData } = eventEntity;
     return new EventRequestModel(
       eventData.id,
       eventData.title,
@@ -45,5 +46,14 @@ export class EventMapper {
       address,
       userId
     );
+  }
+
+  static toPageEntity(pageEventResponse: PageEventResponseModel): { events: EventEntity[], totalPages: number, totalElements: number } {
+    const events = pageEventResponse.events.map(eventResponse => this.toEntity(eventResponse));
+    return {
+      events,
+      totalPages: pageEventResponse.totalPages,
+      totalElements: pageEventResponse.totalElements
+    };
   }
 }

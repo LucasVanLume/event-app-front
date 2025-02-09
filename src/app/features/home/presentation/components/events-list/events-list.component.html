@@ -16,15 +16,41 @@
     </button>
   </div>
 
+  <mat-chip-listbox class="chip-section">
+    <mat-chip-option 
+      [selected]="selectedChip === 'all'" 
+      (click)="onChipSelect('all')">
+      Ver Todos
+    </mat-chip-option>
+    
+    <mat-chip-option 
+      [selected]="selectedChip === 'mine'" 
+      (click)="onChipSelect('mine')">
+      Meus Eventos
+    </mat-chip-option>
+  </mat-chip-listbox>
+
   <div class="records-count">
-    {{ filteredEvents.length }} eventos achados
+    {{ totalElements }} eventos achados
   </div>
 
   <div class="events-list">
     <div *ngFor="let event of filteredEvents" class="event-item" (click)="onEventClick(event)">
       <h3>{{ event.title }}</h3>
       <p class="event-date">{{ event.theme }}</p>
-      <!-- <p class="event-date">{{ event.date| date:'dd MMM yyyy' }}</p> -->
     </div>
   </div>
+
+  <div class="pagination-controls">
+    <button mat-icon-button class="pagination-btn" (click)="goToPreviousPage()" [disabled]="currentPage === 0">
+      <mat-icon>chevron_left</mat-icon>
+    </button>
+  
+    <span class="pagination-text">Página {{ currentPage + 1 }} de {{ totalPages }}</span>
+  
+    <button mat-icon-button class="pagination-btn" (click)="goToNextPage()" [disabled]="currentPage === totalPages - 1">
+      <mat-icon>chevron_right</mat-icon>
+    </button>
+  </div>
+  
 </div>
