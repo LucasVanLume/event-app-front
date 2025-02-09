@@ -16,8 +16,9 @@
           <div class="info-item">
             <mat-icon>calendar_today</mat-icon>
             <div class="info-text">
-              <h3>Data e Período</h3>
-              <p>{{event.date | date:'yyyy-MM-dd'}} - {{event.startTime}}</p>
+              <h3>Data e Horário</h3>
+              <p>{{event.startDate | date:'dd/MM/yyyy'}} - {{event.endDate | date:'dd/MM/yyyy'}}</p>
+              <p>Das {{event.startTime}} às {{event.endTime}}</p>
             </div>
           </div>
 
