@@ -1,3 +1,5 @@
+import { AddressRequestModel } from "./address-request.model";
+
 export class EventRequestModel {
     id: string;
     title: string;
@@ -12,6 +14,7 @@ export class EventRequestModel {
     email: string;
     phone: string;
     remote: boolean;
+    address: AddressRequestModel;
   
     constructor(
       id: string,
@@ -26,7 +29,8 @@ export class EventRequestModel {
       theme: string,
       email: string,
       phone: string,
-      remote: boolean
+      remote: boolean,
+      address: AddressRequestModel,
     ) {
       this.id = id;
       this.title = title;
@@ -41,6 +45,7 @@ export class EventRequestModel {
       this.email = email;
       this.phone = phone;
       this.remote = remote;
+      this.address = address;
     }
   }
   

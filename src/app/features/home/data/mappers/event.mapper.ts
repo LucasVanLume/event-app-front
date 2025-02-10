@@ -1,5 +1,6 @@
 import { AddressEntity } from "../../domain/entities/address.entity";
 import { EventEntity } from "../../domain/entities/event.entity";
+import { AddressRequestModel } from "../models/request/address-request.model";
 import { EventRequestModel } from "../models/request/event-request.model";
 import { EventResponseModel } from "../models/response/event-response.model";
 import { PageEventResponseModel } from "../models/response/page-event-response.model";
@@ -8,6 +9,14 @@ import { PageEventResponseModel } from "../models/response/page-event-response.m
 export class EventMapper {
   static toRequestModel(eventEntity: EventEntity): EventRequestModel {
     const { address, ...eventData } = eventEntity;
+    
+    const addressRequestModel = new AddressRequestModel(
+      address.cep,
+      address.cidade,
+      address.bairro,
+      address.rua
+    );
+
     return new EventRequestModel(
       eventData.id,
       eventData.title,
@@ -21,12 +30,13 @@ export class EventMapper {
       eventData.theme,
       eventData.email,
       eventData.phone,
-      eventData.remote
+      eventData.remote,
+      addressRequestModel,
     );
   }
 
   static toEntity(eventResponse: EventResponseModel): EventEntity {
-    const address = new AddressEntity("", "", "", "");
+    const address = new AddressEntity("51000040", "Av. Paulista", "São Paulo", "Centro");
     const userId = eventResponse.userId;
 
     return new EventEntity(

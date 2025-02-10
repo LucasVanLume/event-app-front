@@ -20,7 +20,7 @@ export class EventsListComponent implements OnInit {
   totalPages: number = 0;
   totalElements: number = 0;
   currentPage: number = 0;
-  size: number = 20;
+  size: number = 15;
 
   constructor(private getAllEventsUseCase: GetAllEventsUseCase) {}
 
