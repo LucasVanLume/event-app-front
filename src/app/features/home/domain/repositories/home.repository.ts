@@ -6,4 +6,6 @@ export abstract class HomeRepository {
   abstract getAddressByCep(params: { cep: string }): Observable<AddressEntity>;
 
   abstract createEvent(params: { eventEntity: EventEntity }): Observable<EventEntity>;
+
+  abstract getAllEvents(page: number, size: number): Observable<{ events: EventEntity[], totalPages: number, totalElements: number }>;
 }

@@ -1,3 +1,5 @@
+import { AddressRequestModel } from "./address-request.model";
+
 export class EventRequestModel {
     id: string;
     title: string;
@@ -6,11 +8,13 @@ export class EventRequestModel {
     eventUrl: string;
     startTime: string;
     endTime: string;
-    date: string;
+    startDate: string;
+    endDate: string;
     theme: string;
     email: string;
     phone: string;
     remote: boolean;
+    address: AddressRequestModel;
   
     constructor(
       id: string,
@@ -20,11 +24,13 @@ export class EventRequestModel {
       eventUrl: string,
       startTime: string,
       endTime: string,
-      date: string,
+      startDate: string,
+      endDate: string,
       theme: string,
       email: string,
       phone: string,
-      remote: boolean
+      remote: boolean,
+      address: AddressRequestModel,
     ) {
       this.id = id;
       this.title = title;
@@ -33,11 +39,13 @@ export class EventRequestModel {
       this.eventUrl = eventUrl;
       this.startTime = startTime;
       this.endTime = endTime;
-      this.date = date;
+      this.startDate = startDate;
+      this.endDate = endDate;
       this.theme = theme;
       this.email = email;
       this.phone = phone;
       this.remote = remote;
+      this.address = address;
     }
   }
   

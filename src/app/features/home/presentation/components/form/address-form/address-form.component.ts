@@ -8,4 +8,5 @@ import { FormGroup } from '@angular/forms';
 })
 export class AddressFormComponent {
   @Input() addressForm!: FormGroup;
+  @Input() isLoadingCep!: boolean;
 }

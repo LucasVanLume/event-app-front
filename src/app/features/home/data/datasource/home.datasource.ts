@@ -5,6 +5,8 @@ import { AddressResponseModel } from '../models/response/address-response.model'
 import { EventEntity } from '../../domain/entities/event.entity';
 import { ApiEndpoints } from 'src/app/shared/utils/constants/api-endpoints.constants';
 import { EventMapper } from '../mappers/event.mapper';
+import { EventResponseModel } from '../models/response/event-response.model';
+import { PageEventResponseModel } from '../models/response/page-event-response.model';
 
 @Injectable({
   providedIn: 'root',
@@ -28,4 +30,15 @@ export class HomeDataSource {
       { headers }
     );
   }
+
+  getAllEvents(page: number, size: number): Observable<PageEventResponseModel> {
+    const token = sessionStorage.getItem('auth-token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    return this.httpClient.get<PageEventResponseModel>(
+      `${ApiEndpoints.GET_ALL_EVENTS}?page=${page}&size=${size}`,
+      { headers }
+    );
+  }
+  
 }

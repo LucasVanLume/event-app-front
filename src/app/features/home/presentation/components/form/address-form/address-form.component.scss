@@ -32,6 +32,11 @@
                 max-width: 256px;
             }
 
+            .loader {
+                transform: translateY(45%);
+                --mdc-circular-progress-active-indicator-color: var(--blue-main);
+            }
+
             .form-group {
                 flex: 1;
                 

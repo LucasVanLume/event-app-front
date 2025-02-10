@@ -66,9 +66,28 @@
     font-size: 12px;
   }
 
+  .chip-section {
+    margin-bottom: 12px;
+
+    mat-chip-option {
+      background: rgb(191, 201, 243);
+      font-size: 12px;
+    }
+
+    mat-chip-option.mat-mdc-chip-selected {
+      background-color: var(--blue-main);
+      color: white
+    }
+  }
+
   .events-list {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-height: 750px;
     overflow-y: auto;
-    max-height: 866px;
+
+    padding-left: 24px;
     
     .event-item {
       padding: 12px 16px;
@@ -92,6 +111,37 @@
       }
     }
   }
+
+  .pagination-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 12px;
+    margin-bottom: 24px;
+  
+    button {
+      color: var(--dark-text);
+      transition: opacity 0.5s ease;
+  
+      &:hover {
+        opacity: 0.9;
+      }
+  
+      &:disabled {
+        color: var(--medium-text);
+        opacity: 0.5;
+        cursor: default;
+      }
+    }
+  
+    span {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--medium-text);
+    }
+  }
+  
 }
 
 /* Personalização da barra de rolagem */

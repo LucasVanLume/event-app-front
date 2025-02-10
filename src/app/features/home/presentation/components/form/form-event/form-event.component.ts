@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { debounceTime, switchMap, catchError, of, distinctUntilChanged, filter, take } from 'rxjs';
+import { debounceTime, switchMap, catchError, of, distinctUntilChanged, filter, take, forkJoin, timer } from 'rxjs';
 import { AddressEntity } from 'src/app/features/home/domain/entities/address.entity';
 import { EventEntity } from 'src/app/features/home/domain/entities/event.entity';
 import { CreateEventUseCase } from 'src/app/features/home/domain/usecases/create-event.usecase';
@@ -13,9 +13,12 @@ import { GetAddressUseCase } from 'src/app/features/home/domain/usecases/get-add
   styleUrls: ['./form-event.component.scss']
 })
 export class FormEventComponent implements OnInit {
+  @Input() userId: string = "";
+  @Output() eventCreated = new EventEmitter<EventEntity>();
 
   eventForm: FormGroup;
   addressForm: FormGroup;
+  isLoadingCep: boolean = false;
 
   constructor(
     private toastService: ToastrService,
@@ -50,13 +53,19 @@ export class FormEventComponent implements OnInit {
       debounceTime(500),
       distinctUntilChanged(),
       filter(cep => cep.length === 8),
-      switchMap(cep => this.getAddressUseCase.execute(cep).pipe(
-        take(1),
-        catchError(() => {
-          return of(null);
-        })
-      ))
-    ).subscribe(address => {
+      switchMap(cep => {
+        this.isLoadingCep = true;
+
+        return forkJoin({
+          address: this.getAddressUseCase.execute(cep).pipe(
+            take(1),
+            catchError(() => of(null))
+          ),
+          delay: timer(1000)
+        });
+      })
+    ).subscribe(({ address }) => {
+      this.isLoadingCep = false;
       if (address) {
         this.populateAddressFields(address);
       } else {
@@ -97,17 +106,20 @@ export class FormEventComponent implements OnInit {
         formData.eventUrl,
         formData.startTime,
         formData.endTime,
-        `${formData.startDate}-${formData.endDate}`,
+        formData.startDate,
+        formData.endDate,
         formData.theme,
         formData.email,
         formData.tel,
         formData.isRemote,
-        formData.address
+        formData.address,
+        this.userId
       );
 
       this.createEventUseCase.execute(eventEntity).subscribe({
-        next: (event) => {
-          console.log('Evento criado com sucesso:', event);
+        next: (createdEvent) => {
+          console.log('Evento criado com sucesso:', createdEvent);
+          this.eventCreated.emit(createdEvent);
         },
         error: (err) => {
           console.error('Erro ao criar evento:', err);
