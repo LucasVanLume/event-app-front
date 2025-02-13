@@ -39,5 +39,13 @@ export class HomeRepositoryImpl implements HomeRepository {
       })
     );
   }
+
+  getFilterEvents( title: string, theme: string, page: number, size: number, userId?: string): Observable<{ events: EventEntity[], totalPages: number, totalElements: number }> {
+    return this.homeDataSource.getFilterEvents(title, theme, page, size, userId).pipe(
+      map((pageEventResponse: PageEventResponseModel) => {
+        return EventMapper.toPageEntity(pageEventResponse);
+      })
+    );
+  }
   
 }

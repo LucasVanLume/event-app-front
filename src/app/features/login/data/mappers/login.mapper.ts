@@ -4,7 +4,7 @@ import { LoginResponse } from 'src/app/shared/types/login-response.type';
 
 export class LoginMapper extends Mapper<LoginResponse, UserEntity> {
   mapFrom(param: LoginResponse): UserEntity {
-    return new UserEntity({ username: param.name, token: param.token });
+    return new UserEntity({ username: param.name, token: param.token, id: param.id });
   }
 
   mapTo(param: UserEntity): LoginResponse {
