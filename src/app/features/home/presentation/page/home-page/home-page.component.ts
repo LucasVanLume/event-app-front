@@ -29,6 +29,7 @@ export class HomePageComponent {
 
   onEventCreated(event: EventEntity) {
     this.eventsListComponent.filteredEvents.unshift(event);
+    this.eventsListComponent.totalElements++;
   }
 
   onNewEventForm() {
