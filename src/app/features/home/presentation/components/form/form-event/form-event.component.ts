@@ -119,7 +119,7 @@ export class FormEventComponent implements OnInit {
       this.createEventUseCase.execute(eventEntity).subscribe({
         next: (createdEvent) => {
           console.log('Evento criado com sucesso:', createdEvent);
-          this.eventCreated.emit(createdEvent);
+          this.eventCreated.emit(eventEntity);
         },
         error: (err) => {
           console.error('Erro ao criar evento:', err);

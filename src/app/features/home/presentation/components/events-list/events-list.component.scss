@@ -27,6 +27,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 16px;
+    margin-left: 24px;
     gap: 12px;
     
     .search-field {
@@ -66,6 +67,11 @@
         margin-top: 4px;
         margin-bottom: 4px;
       }
+    }
+
+    .info-icon {
+      color: var(--grey-icon);
+      cursor: pointer;
     }
     
     .search-icon {

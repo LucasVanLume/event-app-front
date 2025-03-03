@@ -26,6 +26,13 @@
           {{theme}}
         </mat-option>
       </mat-autocomplete>
+      
+      <mat-icon matSuffix
+              class="info-icon"
+              matTooltip="Digite '@' para selecionar um tema. Exemplo: @Design"
+              matTooltipPosition="above">
+        info
+      </mat-icon>
     </mat-form-field>
     <button mat-mini-fab class="add-button" (click)="onNewEventClick()">
       <mat-icon>add</mat-icon>
