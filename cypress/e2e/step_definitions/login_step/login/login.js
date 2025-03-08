@@ -5,7 +5,11 @@ Given('que estou na página de login', () => {
 });
 
 When('eu insiro {string} no campo {string}', (valor, campo) => {
-    cy.get(`[data-cy=${campo}]`).type(valor);
+    if (valor.trim() === '') {
+        //cy.get(`[data-cy=${campo}]`);
+    } else {
+        cy.get(`[data-cy=${campo}]`).type(valor);
+    }
 });
 
 When('clico no botão {string}', (botao) => {

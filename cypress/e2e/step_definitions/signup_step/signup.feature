@@ -77,10 +77,12 @@ Feature: Cadastro no site de eventos
     And devo ver a mensagem "<mensagem>"
 
   Examples:
-  | nome         | email            | senha      | confirmarSenha  | mensagem                                     |
-  |              |                  |            |                 | Todos os campos são obrigatórios.            |
-  | Lucas Lima   |                  | Senha123!  | Senha123!       | Todos os campos são obrigatórios.            |
-  | Lucas Lima   | email_invalido   | Senha123!  | Senha123!       | Por favor, insira um email válido.           |
-  | Lucas Lima   | lucas@email.com  | 123        | 123             | A senha deve conter pelo menos 6 caracteres. |
-  | Lucas Lima   | lucas@email.com  | Senha123!  | SenhaDiferente! | As senhas não coincidem.                     |
-
+  | nome      | email          | senha    | confirmarSenha | mensagem                                     |
+  |           |                |          |                | Todos os campos são obrigatórios.            |
+  |           | email@valido.com | senha123 | senha123      | Todos os campos são obrigatórios.            |
+  | Nome      |                | senha123 | senha123      | Todos os campos são obrigatórios.            |
+  | Nome      | email@valido.com |          | senha123      | Todos os campos são obrigatórios.            |
+  | Nome      | email@valido.com | senha123 |                | Todos os campos são obrigatórios.            |
+  | Nome      | emailInvalido   | senha123 | senha123      | Por favor, insira um email válido.           |
+  | Nome      | email@valido.com | senh     | senh          | A senha deve conter pelo menos 6 caracteres. |
+  | Nome      | email@valido.com | senha123 | senha321      | As senhas não coincidem.                    |
