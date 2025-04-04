@@ -82,13 +82,13 @@ Feature: Criação de evento
   #   And clico no botão "Criar Evento"
   #   Then devo ver uma mensagem de erro "<mensagem>"
 
-  # Examples:
-  #   | nome                     | descricao                | horarioInicial | horarioFinal | dataInicial | dataFinal   | tema                  | email                 | telefone    | CEP        | mensagem                                       |
-  #   | ""                       | "Descrição do evento"  | "14:00" | "18:00" | "2025-06-15" | "2025-06-16" | "Inovação"       | "evento@exemplo.com" | "81987654321" | "52080000" | O campo 'nome' é obrigatório.                 |
-  #   | "Evento Teste"           | ""                     | "14:00" | "18:00" | "2025-06-15" | "2025-06-16" | "Inovação"  | "evento@email.com" | "81987654321" | "50740-100" | O campo 'descrição' é obrigatório.             |
-  #   | "Conferência Tech"       | "Discussão sobre IA"   | "09:00" | "17:00" | "2025-07-05" | "2025-07-04" | "Tecnologia" | "evento@exemplo.com" | "81912345678" | "50670-400" | A data final não pode ser anterior à inicial. |
-  #   | "Fórum de Economia"      | "Mercado financeiro"   | "10:00" | "12:00" | "2025-09-10" | "2025-09-11" | "Economia"   | ""                   | "81956563221" | "50050-200" | O campo 'e-mail' é obrigatório.               |
-  #   | "Conferência de Design"  | "Tendências UX/UI"     | "14:00" | "16:00" | "2025-10-20" | "2025-10-22" | "Design"          | "evento@exemplo.com" | "" | "70040-300" | O campo 'telefone' é obrigatório.             |
-  #   | "Summit de Engenharia"   | "Inovações na Indústria" | "08:30" | "17:30" | "" | "2025-06-16" | "Tecnologia" | "evento@exemplo.com" | "81955443322" | "40020-200" | O campo 'data inicial' é obrigatório.        |
-  #   | "Congresso de Tecnologia" | "Avanços tecnológicos" | "10:00" | "12:00" | "2025-08-15" | "2025-08-17" | ""                 | "evento@exemplo.com" | "2299775544" | "22222-333" | O campo 'tema' é obrigatório.                 |
-  #   | "Simpósio de Biotecnologia" | "Descobertas recentes" | "09:00" | "17:00" | "2025-11-05" | "2025-11-07" | "Ciência"          | "evento@biotec.com"  | "85988776655" | "" | O campo 'CEP' é obrigatório.                 |
+  Examples:
+    | nome                     | descricao            | horarioInicial | horarioFinal | dataInicial | dataFinal   | tema                  | email                 | telefone    | CEP        | mensagem                                       |
+    |                          | Descrição do evento  | 14:00          | 18:00        | 2025-06-15  | 2025-06-16  | Tecnologia            | evento@exemplo.com    | 81987654321 | 52080000   | O campo 'nome' é obrigatório.                 |
+    | Evento Teste             |                      | 14:00          | 18:00        | 2025-06-15  | 2025-06-16  | Design                | evento@email.com      | 81987654321 | 50740-100  | O campo 'descrição' é obrigatório.             |
+    | Conferência Tech         | Discussão sobre IA   | 09:00          | 17:00        | 2025-07-05  | 2025-07-04  | Tecnologia            | evento@exemplo.com    | 81912345678 | 50670-400  | A data final não pode ser anterior à inicial. |
+    | Fórum de Economia        | Mercado financeiro   | 10:00          | 12:00        | 2025-09-10  | 2025-09-11  | Design                |                       | 81956563221 | 50050-200  | O campo 'e-mail' é obrigatório.               |
+    | Conferência de Design    | Tendências UX/UI     | 14:00          | 16:00        | 2025-10-20  | 2025-10-22  | Design                | evento@exemplo.com    |             | 70040-300  | O campo 'telefone' é obrigatório.             |
+    | Summit de Engenharia     | Inovações na Indústria | 08:30        | 17:30        |             | 2025-06-16  | Tecnologia            | evento@exemplo.com    | 81955443322 | 40020-200  | O campo 'data inicial' é obrigatório.        |
+    | Congresso de Tecnologia  | Avanços tecnológicos | 10:00          | 12:00        | 2025-08-15  | 2025-08-17  |                       | evento@exemplo.com    | 2299775544  | 22222-333  | O campo 'tema' é obrigatório.                 |
+    | Simpósio de Biotecnologia | Descobertas recentes | 09:00         | 17:00        | 2025-11-05  | 2025-11-07  | Design                | evento@biotec.com     | 85988776655 |            | O campo 'CEP' é obrigatório.                 |

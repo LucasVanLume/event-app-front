@@ -6,21 +6,22 @@ const { lerArquivo, salvarArquivo } = require("./utils/filesUtils.js");
 const arquivo = path.resolve(__dirname, "../cypress/e2e/step_definitions/login_step/login.feature");
 
 const prompt = `
-Gere exemplos de entradas inválidas para um formulário de login usando o método combinatório Pairwise Testing, garantindo um conjunto mínimo de casos de teste que cobrem todas as combinações possíveis. Siga estas regras:
-- Email: Pode ser válido ou inválido.
-- Senha: Pode ser válida ou inválida.
-- Mensagens de erro de saída esperadas devem serguir obrigatoriamente as regras e ordem de prioridade abaixo:
-  1. Se email ou senha estiverem vazios → "Os campos de email e senha são obrigatórios."
-  2. Se email for inválido → "Por favor, insira um email válido."
-  3. Se email e senha não corresponderem → "Credenciais inválidas, tente novamente."
-- Formato de saída:
-  - Retorne a saída apenas na forma de tabela Gherkin, sem adição de linhas pontilhadas.
-  - Não inclua explicações antes ou depois da tabela.
-  - Consire apenas as combinações mais relevantes e sem redundancia.
-  - Exemplo do formato correto: 
+Gere exemplos de entradas inválidas para um formulário de criação de evento utilizando o método combinatório Pairwise Testing, garantindo um conjunto mínimo de casos de teste que cubram todas as combinações relevantes e não redundantes. Siga estas regras:
 
-    | email                | senha       | mensagem                                     |
-    | usuario@evento.com   |             | Os campos de email e senha são obrigatórios. |
+Campos obrigatórios: nome, descricao, horarioInicial, horarioFinal, dataInicial, dataFinal, tema, email, telefone, CEP.
+Regras de validação:
+Se qualquer campo obrigatório estiver vazio → Retornar mensagem: "O campo '<nome_do_campo>' é obrigatório."
+Se dataFinal for anterior a dataInicial → Retornar mensagem: "A data final não pode ser anterior à inicial."
+
+Formato de saída:
+
+A resposta deve estar somente no formato de tabela Gherkin, sem explicações extras.
+Não incluir linhas tracejadas ou explicações fora da tabela.
+Evite combinações redundantes, priorize os casos mais relevantes com falhas distintas.
+Utilize o seguinte formato de exemplo:
+
+| nome         | descricao   | horarioInicial | horarioFinal | dataInicial | dataFinal | tema       | email               | telefone     | CEP        | mensagem        |
+|              |             |                |              |             |           |            |                     |              |            |                 |
 `.trim();
 
 async function atualizarFeature() {

@@ -3,7 +3,7 @@ const { GoogleGenerativeAI } = require("@google/generative-ai");
 const path = require('path');
 require('dotenv').config({ path: path.resolve(__dirname, '../../.env') });
 
-const AI_PROVIDER = process.env.AI_PROVIDER || "gemnini"; // "openai" or "gemini"
+const AI_PROVIDER = process.env.AI_PROVIDER || "gemini"; // "openai" or "gemini"
 const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 

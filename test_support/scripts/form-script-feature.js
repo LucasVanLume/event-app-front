@@ -22,7 +22,7 @@ Gere exemplos de entradas inválidas para um formulário de ${featureName} usand
   3. [DESCREVA A REGRA 3]
 
 - Formato de saída:
-  - Retorne a saída apenas na forma de tabela Gherkin, sem adição de linhas pontilhadas e sem adição de prefixos como \`\`\`gherkin\`.
+  - Retorne a saída apenas na forma de tabela Gherkin, sem adição de linhas pontilhadas e sem adição de prefixos como gherkin.
   - Não inclua explicações antes ou depois da tabela.
   - Utilize apenas as combinações mais relevantes, evitando redundâncias desnecessárias.
   - Certifique-se de que cada par de valores de entrada seja testado pelo menos uma vez.
