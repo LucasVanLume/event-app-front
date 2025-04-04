@@ -40,5 +40,15 @@ export class HomeDataSource {
       { headers }
     );
   }
+
+  getFilterEvents(title: string, theme: string, page: number, size: number, userId?: string): Observable<PageEventResponseModel> {
+    const token = sessionStorage.getItem('auth-token');
+    const headers = new HttpHeaders().set('Authorization', `Bearer ${token}`);
+  
+    return this.httpClient.get<PageEventResponseModel>(
+      `${ApiEndpoints.GET_FILTERED_EVENTS}?title=${title}&theme=${theme}&page=${page}&size=${size}&user=${userId}`,
+      { headers }
+    );
+  }
   
 }

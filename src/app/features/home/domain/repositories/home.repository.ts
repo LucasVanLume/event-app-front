@@ -8,4 +8,6 @@ export abstract class HomeRepository {
   abstract createEvent(params: { eventEntity: EventEntity }): Observable<EventEntity>;
 
   abstract getAllEvents(page: number, size: number): Observable<{ events: EventEntity[], totalPages: number, totalElements: number }>;
+
+  abstract getFilterEvents(title: string, theme: string, page: number, size: number, userId?: string): Observable<{ events: EventEntity[], totalPages: number, totalElements: number }>;
 }

@@ -97,7 +97,21 @@ export class FormEventComponent implements OnInit {
         ...this.eventForm.getRawValue(),
         address: this.addressForm.getRawValue()
       };
-
+  
+      const startTime = formData.startTime;
+      const endTime = formData.endTime;
+  
+      if (endTime <= startTime) {
+        this.toastService.error('O horário de término deve ser posterior ao horário de início.');
+        return;
+      }
+  
+      const tel = formData.tel;
+      if (!tel.match(/^\d{10,11}$/)) {
+        this.toastService.error('O telefone deve conter 10 ou 11 dígitos.');
+        return;
+      }
+  
       const eventEntity = new EventEntity(
         formData.id,
         formData.eventName,
@@ -115,11 +129,11 @@ export class FormEventComponent implements OnInit {
         formData.address,
         this.userId
       );
-
+  
       this.createEventUseCase.execute(eventEntity).subscribe({
         next: (createdEvent) => {
           console.log('Evento criado com sucesso:', createdEvent);
-          this.eventCreated.emit(createdEvent);
+          this.eventCreated.emit(eventEntity);
         },
         error: (err) => {
           console.error('Erro ao criar evento:', err);
@@ -129,6 +143,7 @@ export class FormEventComponent implements OnInit {
       console.log(formData);
     } else {
       this.eventForm.markAllAsTouched();
+      this.toastService.error('Por favor, preencha todos os campos obrigatórios corretamente.');
     }
   }
 

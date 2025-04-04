@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "form-feature": "node test_support/scripts/form-script-feature.js"
   },
   "private": true,
   "dependencies": {
@@ -20,8 +21,11 @@
     "@angular/platform-browser": "^16.2.0",
     "@angular/platform-browser-dynamic": "^16.2.0",
     "@angular/router": "^16.2.0",
+    "@google/generative-ai": "^0.24.0",
+    "dotenv": "^16.0.3",
     "ngx-material-timepicker": "^13.1.1",
     "ngx-toastr": "^19.0.0",
+    "openai": "^3.3.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.13.0"

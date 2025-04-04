@@ -1,6 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { EventsListComponent } from '../../components/events-list/events-list.component';
 import { EventEntity } from '../../../domain/entities/event.entity';
+import { ToastrService } from 'ngx-toastr';
+import { debounceTime, Subject } from 'rxjs';
 
 @Component({
   selector: 'app-home-page',
@@ -17,7 +19,9 @@ export class HomePageComponent {
   token: string = '';
   userId: string = '';
 
-  constructor() { }
+  constructor(
+    private toastService: ToastrService
+  ) { }
 
   ngOnInit() {
     const user = history.state.user;
@@ -29,6 +33,12 @@ export class HomePageComponent {
 
   onEventCreated(event: EventEntity) {
     this.eventsListComponent.filteredEvents.unshift(event);
+    this.eventsListComponent.totalElements++;
+
+    this.toastService.success(`Evento criado com sucesso!`);
+    setTimeout(() => {
+      this.onEventSelected(event);
+    }, 500);
   }
 
   onNewEventForm() {
@@ -36,7 +46,7 @@ export class HomePageComponent {
   }
 
   onEventSelected(event: EventEntity) {
-    console.log("Evento selecionado:", event);
+    // console.log("Evento selecionado:", event);
     this.selectedEvent = event;
     this.showForm = false;
   }

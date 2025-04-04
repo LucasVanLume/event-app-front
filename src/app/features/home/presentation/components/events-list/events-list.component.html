@@ -6,10 +6,33 @@
   <div class="search-section">
     <mat-form-field class="search-field" appearance="outline">
       <mat-icon class="search-icon" matPrefix>search</mat-icon>
-      <input matInput
-              placeholder="Busque eventos..." 
-              [(ngModel)]="searchTerm"
-              (input)="searchEvents()">
+      <div class="input-container">
+        <mat-chip-grid #chipGrid>
+          <mat-chip *ngIf="selectedTheme" [removable]="true" (removed)="removeTheme()">
+            {{selectedTheme}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+          </mat-chip>
+        </mat-chip-grid>
+        <input matInput
+               #searchInput
+               [matChipInputFor]="chipGrid"
+               [matAutocomplete]="auto"
+               placeholder="{{ selectedTheme ? '' : 'Busque eventos...' }}"
+               [(ngModel)]="searchTerm"
+               (input)="onSearchInput($event)">
+      </div>
+      <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onThemeSelected($event)">
+        <mat-option *ngFor="let theme of filteredThemes" [value]="theme">
+          {{theme}}
+        </mat-option>
+      </mat-autocomplete>
+      
+      <mat-icon matSuffix
+              class="info-icon"
+              matTooltip="Digite '@' para selecionar um tema. Exemplo: @Design"
+              matTooltipPosition="above">
+        info
+      </mat-icon>
     </mat-form-field>
     <button mat-mini-fab class="add-button" (click)="onNewEventClick()">
       <mat-icon>add</mat-icon>

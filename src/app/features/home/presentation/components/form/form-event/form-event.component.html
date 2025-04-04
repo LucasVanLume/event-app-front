@@ -20,14 +20,16 @@
                 formControlName="eventName"
                 type="text"
                 class="event-title-input" 
-                placeholder="Nome do Seu Evento">
+                placeholder="Nome do Seu Evento"
+                data-cy="nome">
               <input
                 matInput
                 maxlength="250"
                 formControlName="eventDescription"
                 type="text" 
                 class="event-description-input" 
-                placeholder="Escreva uma pequena descrição para este evento">
+                placeholder="Escreva uma pequena descrição para este evento"
+                data-cy="descrição">
             </div>
           </div>
 
@@ -43,7 +45,8 @@
                     formControlName="startTime"
                     type="time"
                     class="form-control"
-                    required>
+                    required
+                    data-cy="horarioInicial">
                 </div>
                 
                 <div class="form-group">
@@ -53,14 +56,15 @@
                     formControlName="endTime"
                     type="time" 
                     class="form-control"
-                    required>
+                    required
+                    data-cy="horarioFinal">
                 </div>
 
                 <mat-form-field class="form-group" appearance="outline">
                   <mat-label>Período</mat-label>
                   <mat-date-range-input [rangePicker]="picker">
-                    <input formControlName="startDate" matStartDate placeholder="Início">
-                    <input formControlName="endDate" matEndDate placeholder="Fim">
+                    <input formControlName="startDate" matStartDate placeholder="Início" data-cy="dataInicial">
+                    <input formControlName="endDate" matEndDate placeholder="Fim" data-cy="dataFinal">
                   </mat-date-range-input>
                   <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
                   <mat-date-range-picker #picker></mat-date-range-picker>
@@ -70,7 +74,7 @@
             <div class="form-row">
               <mat-form-field class="form-group" appearance="outline">
                 <mat-label>Tema</mat-label>
-                <mat-select formControlName="theme">
+                <mat-select formControlName="theme" data-cy="tema">
                   <mat-option value="Tecnologia">Tecnologia</mat-option>
                   <mat-option value="Design">Design</mat-option>
                 </mat-select>
@@ -78,11 +82,11 @@
                 
               <mat-form-field class="form-group" appearance="outline">
                 <mat-label>Email</mat-label>
-                <input matInput placeholder="event@example.com" formControlName="email" required>
+                <input matInput placeholder="event@example.com" formControlName="email" required data-cy="email">
                 <mat-icon class="input-icon" matSuffix aria-hidden="false" aria-label="email icon" fontIcon="email"></mat-icon>
               </mat-form-field>
               
-              <app-phone-input-component class="form-group" formControlName="tel" required></app-phone-input-component>
+              <app-phone-input-component class="form-group" formControlName="tel" required data-cy="telefone"></app-phone-input-component>
             </div>
         
             <div class="form-row">

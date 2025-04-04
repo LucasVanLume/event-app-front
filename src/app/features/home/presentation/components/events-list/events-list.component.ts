@@ -1,6 +1,9 @@
-import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
+import { Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild } from "@angular/core";
 import { EventEntity } from "../../../domain/entities/event.entity";
 import { GetAllEventsUseCase } from "../../../domain/usecases/get-all-events.usecase";
+import { MatAutocompleteSelectedEvent } from "@angular/material/autocomplete";
+import { GetFilterEventsUseCase } from "../../../domain/usecases/get-filter-events.usecase";
+import { debounceTime, Subject } from "rxjs";
 
 
 @Component({
@@ -22,10 +25,49 @@ export class EventsListComponent implements OnInit {
   currentPage: number = 0;
   size: number = 15;
 
-  constructor(private getAllEventsUseCase: GetAllEventsUseCase) {}
+  @ViewChild('searchInput') searchInput!: ElementRef;
+  themes: string[] = ['Tecnologia', 'Design'];
+  filteredThemes: string[] = [];
+  selectedTheme: string | null = null;
+
+  private searchSubject = new Subject<string>();
+
+  constructor(
+    private getAllEventsUseCase: GetAllEventsUseCase,
+    private getFilterEventsUseCase: GetFilterEventsUseCase
+  ) {
+    this.searchSubject.pipe(debounceTime(500)).subscribe(() => {
+      this.searchEvents();
+    });
+  }
 
   ngOnInit() {
     this.loadEvents();
+  }
+
+  onSearchInput(event: Event) {
+    const inputValue = (event.target as HTMLInputElement).value;
+    if (inputValue.includes('@') && !this.selectedTheme) {
+      this.filteredThemes = this.themes.filter(theme => 
+        theme.toLowerCase().includes(inputValue.split('@').pop()!.toLowerCase())
+      );
+    } else if (!this.selectedTheme) {
+      this.filteredThemes = [];
+    }
+    this.searchTerm = inputValue.replace('@', '');
+    this.searchSubject.next(inputValue);
+  }
+
+  onThemeSelected(event: MatAutocompleteSelectedEvent) {
+    this.selectedTheme = event.option.value;
+    this.searchTerm = '';
+    this.filteredThemes = [];
+    this.searchEvents();
+  }
+
+  removeTheme() {
+    this.selectedTheme = null;
+    this.searchEvents();
   }
 
   loadEvents() {
@@ -43,15 +85,19 @@ export class EventsListComponent implements OnInit {
     });
   }
 
-  searchEvents() {
-    if (!this.searchTerm) {
-      this.filteredEvents = this.events;
-      return;
-    }
-
-    this.filteredEvents = this.events.filter((event) =>
-      event.title.toLowerCase().includes(this.searchTerm.toLowerCase())
-    );
+  searchEvents(userId?: string) {
+    this.getFilterEventsUseCase.execute({ title: this.searchTerm, theme: this.selectedTheme || '', page: this.currentPage, size: this.size, userId: userId || '' }).subscribe({
+      next: (pageResponse) => {
+        const { events, totalPages, totalElements } = pageResponse;
+        this.events = events;
+        this.filteredEvents = [...this.events];
+        this.totalPages = totalPages;
+        this.totalElements = totalElements;
+      },
+      error: (err) => {
+        console.error("Erro ao carregar eventos filtrados:", err);
+      }
+    });
   }
 
   onEventClick(event: EventEntity) {
@@ -64,7 +110,11 @@ export class EventsListComponent implements OnInit {
 
   onChipSelect(filter: string) {
     this.selectedChip = filter;
-    this.loadEvents();
+    if (filter === 'all') {
+      this.loadEvents();
+    } else if (filter === 'mine') {
+      this.searchEvents(this.userId);
+    }
   }
 
   goToNextPage() {
