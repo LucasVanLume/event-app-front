@@ -1,3 +1,5 @@
+* BackEnd -> https://github.com/LucasVanLume/event-app-back
+
 # 🧪 Geração Automatizada de Cenários BDD com LLMs
 
 Este repositório contém todos os materiais utilizados no projeto de pesquisa *"Geração Inteligente de Examples BDD com LLMs: Um Estudo sobre Eficiência, Qualidade e Consistência"*, desenvolvido como parte da disciplina Testes de Software.
